@@ -5,6 +5,14 @@ import {
   Monitor,
   HelpCircle,
   FileText,
+  Wrench,
+  MessageCircleQuestion,
+  BookOpen,
+  CreditCard,
+  UserCog,
+  Shield,
+  Puzzle,
+  Megaphone,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -15,6 +23,14 @@ const iconMap: Record<string, LucideIcon> = {
   Monitor,
   HelpCircle,
   FileText,
+  Wrench,
+  MessageCircleQuestion,
+  BookOpen,
+  CreditCard,
+  UserCog,
+  Shield,
+  Puzzle,
+  Megaphone,
 }
 
 export function getIcon(name: string): LucideIcon {

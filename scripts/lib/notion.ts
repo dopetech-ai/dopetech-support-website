@@ -72,6 +72,18 @@ async function retryWithBackoff<T>(
   throw new Error('Unreachable')
 }
 
+// ── Slug generation from title ──────────────────────────────────────
+
+function titleToSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 // ── Public API ──────────────────────────────────────────────────────
 
 export interface RawArticle {
@@ -93,13 +105,14 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
   let cursor: string | undefined
 
   do {
-    // SDK v5 renamed databases.query → dataSources.query
+    // SDK v5 renamed databases.query -> dataSources.query
+    // Filter by "Publish Status" select property = "Live"
     const response = await withRateLimit(() =>
       client.dataSources.query({
         data_source_id: databaseId,
         filter: {
-          property: 'Status',
-          status: { equals: 'Published' },
+          property: 'Publish Status',
+          select: { equals: 'Live' },
         },
         start_cursor: cursor,
       }),
@@ -110,11 +123,25 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
       const p = page as PageObjectResponse
       const props = p.properties
 
-      const title = extractTitle(props.Name ?? props.Title ?? props.title)
-      const slug = extractRichTextPlain(props.Slug ?? props.slug)
+      // Title: look for Name, Title, title, or Page
+      const title = extractTitle(
+        props.Name ?? props.Title ?? props.title ?? props.Page ?? props.page,
+      )
+
+      // Slug: use Slug property if present, otherwise auto-generate from title
+      const rawSlug = extractRichTextPlain(props.Slug ?? props.slug)
+      const slug = rawSlug || titleToSlug(title)
+
+      // Category: look for Category or category
       const category = extractSelect(props.Category ?? props.category)
+
+      // Meta description: look for Meta Description, Description, Summary
       const metaDescription = extractRichTextPlain(
-        props['Meta Description'] ?? props.Description ?? props.description,
+        props['Meta Description'] ??
+          props.Description ??
+          props.description ??
+          props.Summary ??
+          props.summary,
       )
 
       if (!title || !slug || !category) {

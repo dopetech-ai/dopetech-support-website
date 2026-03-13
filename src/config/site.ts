@@ -25,32 +25,56 @@ export const CATEGORIES: CategoryDef[] = [
     icon: 'Rocket',
   },
   {
-    slug: 'dopeapps',
-    name: 'DopeApps',
-    description: 'Mobile app setup, customization, and troubleshooting.',
-    icon: 'Smartphone',
+    slug: 'troubleshooting',
+    name: 'Troubleshooting',
+    description: 'Diagnose and fix common issues with your DopeTech products.',
+    icon: 'Wrench',
   },
   {
-    slug: 'dopesites',
-    name: 'DopeSites',
-    description: 'Website management, SEO, and content updates.',
-    icon: 'Globe',
+    slug: 'faq',
+    name: 'FAQ',
+    description: 'Frequently asked questions about DopeTech products and services.',
+    icon: 'MessageCircleQuestion',
   },
   {
-    slug: 'dopetender',
-    name: 'DopeTender',
-    description: 'In-store kiosk setup, hardware, and configuration.',
-    icon: 'Monitor',
-  },
-  {
-    slug: 'how-do-i',
-    name: 'How Do I...?',
+    slug: 'how-to',
+    name: 'How-to',
     description: 'Step-by-step guides for common tasks.',
-    icon: 'HelpCircle',
+    icon: 'BookOpen',
+  },
+  {
+    slug: 'billing',
+    name: 'Billing',
+    description: 'Billing, invoices, and payment information.',
+    icon: 'CreditCard',
+  },
+  {
+    slug: 'account',
+    name: 'Account',
+    description: 'Account settings, access, and user management.',
+    icon: 'UserCog',
+  },
+  {
+    slug: 'security',
+    name: 'Security',
+    description: 'Security best practices, compliance, and data protection.',
+    icon: 'Shield',
+  },
+  {
+    slug: 'integrations',
+    name: 'Integrations',
+    description: 'Connect DopeTech with your existing tools and platforms.',
+    icon: 'Puzzle',
+  },
+  {
+    slug: 'release-notes',
+    name: 'Release Notes',
+    description: 'Latest updates, features, and improvements.',
+    icon: 'Megaphone',
   },
 ]
 
-/** Slugs reserved for routes and static assets — category slugs must not collide. */
+/** Slugs reserved for routes and static assets -- category slugs must not collide. */
 export const RESERVED_SLUGS = new Set([
   'articles',
   '404',

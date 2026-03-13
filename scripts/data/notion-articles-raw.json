@@ -1,0 +1,98 @@
+[
+  {
+    "id": "88cb7b13-eaab-4fc3-bb7f-4f4e50cdd9b2",
+    "title": "Home",
+    "category": "Getting started",
+    "summary": "Start here. A centralized portal for clients to access help articles, tools, and contact options.",
+    "lastEdited": "2025-10-07T22:27:35.470Z",
+    "markdown": "> \ud83e\udded Start here. This Home page is your gateway to every client resource. Pick a quick action, fix an issue, or browse by category.\n\n### \ud83d\udd25 Quick actions\n\n- Send your first push campaign\n- Create collections for the home page\n- Manage roles and permissions\n- Content scheduling overview\n\n### \ud83d\udee0\ufe0f Fix an issue\n\n- Menu items not appearing\n- Can\u2019t receive 2FA codes\n- Push notification not delivered\n- Data sync issues\n\n---\n\n### \ud83d\udcda Browse everything\n\n- Getting started \u2014 first\u2011time setup and access\n- How\u2011to \u2014 step\u2011by\u2011step guides for common tasks\n- Troubleshooting \u2014 fixes grouped by severity\n- FAQ \u2014 quick answers to frequent questions\n\n---\n\n### \ud83d\udce3 What\u2019s new\n\n- Release notes \u2014 October 2025\n\n---\n\n### \ud83e\udde9 Need more help?\n\n> \ud83d\udcde Urgent: Call (866) WEED\u2011APPS \u2022 Non\u2011urgent: email [support@dopetech.com](mailto:support@dopetech.com)"
+  },
+  {
+    "id": "58753e2b-9d41-4f9c-89cf-b26ed892d10d",
+    "title": "FAQ \u2014 Roles and permissions",
+    "category": "FAQ",
+    "summary": "Who can do what in the Admin Panel and app.",
+    "lastEdited": "2025-10-07T22:18:58.957Z",
+    "markdown": "### What roles exist?\n\n- Owner: Full access\n- Admin: Manage content, notifications, settings\n- Editor: Update content and campaigns\n- Viewer: Read\u2011only\n\n### Can roles be scoped per store?\n\nYes. Assign access by location where needed.\n\n### How do I request access changes?\n\nEmail support with the user\u2019s email, desired role, and locations."
+  },
+  {
+    "id": "5a6eb7d3-7e45-491a-a3f0-9334653e1605",
+    "title": "Release notes \u2014 October 2025",
+    "category": "Release notes",
+    "summary": "Highlights of recent improvements and fixes.",
+    "lastEdited": "2025-10-07T22:18:58.957Z",
+    "markdown": "### New\n\n- Client portal Home page\n- New Help views: Client portal, Getting started, Troubleshooting by severity, How\u2011to gallery\n\n### Improved\n\n- Admin Panel content collection flows\n\n### Fixed\n\n- Intermittent \u201cNo products found\u201d in Admin Panel\n\n### What\u2019s next\n\n- More client how\u2011tos and troubleshooting guides"
+  },
+  {
+    "id": "fea86a82-1d22-40df-a10a-74ca1f2526ba",
+    "title": "Policy \u2014 Security and data handling",
+    "category": "Security",
+    "summary": "Key practices for protecting customer and store data.",
+    "lastEdited": "2025-10-07T22:18:58.957Z",
+    "markdown": "### Principles\n\n- Least privilege access\n- Use MFA on all admin accounts\n- Store credentials only in an approved password manager\n\n### Data handling\n\n- Never share customer PII in tickets or screenshots\n- Redact sensitive fields before sharing\n\n### Incident reporting\n\n- Urgent issues: Call support line\n- Non\u2011urgent: Email support with details and timestamps"
+  },
+  {
+    "id": "2b2fe8df-69a8-41d0-8e2d-2ebed1a7cfbf",
+    "title": "How\u2011to: Send your first push campaign",
+    "category": "How-to",
+    "summary": "Create and send a targeted push in minutes from the Admin Panel.",
+    "lastEdited": "2025-10-07T22:18:58.957Z",
+    "markdown": "### Overview\n\nSend a basic push notification to a test segment, verify delivery, then schedule a production send.\n\n### Prerequisites\n\n- Admin Panel access\n- Test device registered\n- Draft copy and image (optional)\n\n### Steps\n\n1. Open Admin Panel \u2192 Marketing \u2192 Push\n2. Create campaign\n   - Title: Welcome offer\n   - Message: \u201cTap for 15% off your first app order\u201d\n   - Deeplink: Select a category or product\n3. Choose audience\n   - Start with a test segment (internal users)\n4. Send test\n5. Review results and fix any issues\n6. Schedule production send\n   - Time: Local peak browsing hours\n   - Frequency cap: Enabled\n\n### Verify success\n\n- Test device receives push within 1 minute\n- Deeplink opens the intended screen\n- Delivery and open metrics appear in campaign analytics\n\n### Troubleshooting\n\n- No devices found \u2192 Ensure users opted in to notifications\n- Deeplink opens wrong page \u2192 Re\u2011select deeplink target and retest"
+  },
+  {
+    "id": "3df858a6-1bb0-47a7-a13b-5ce87432f472",
+    "title": "How\u2011to: Add a deals banner",
+    "category": "How-to",
+    "summary": "Add and schedule a promotional banner to highlight deals.",
+    "lastEdited": "2025-10-08T02:08:25.051Z",
+    "markdown": "### Overview\n\nCreate a banner to promote a sale or event.\n\n### Steps\n\n1. Admin Panel \u2192 Marketing \u2192 Banners\n2. New banner\n   - Title: concise offer (e.g., 20% Off Flower)\n   - Image: 1600\u00d7900 recommended\n   - Deep link: choose a category, collection, or product\n3. Audience: All users (or segment)\n4. Schedule start and end time\n5. Save and enable\n\n### Verify success\n\n- Banner renders on app home within minutes and opens the linked screen\n\n### Tips\n\n- Keep text short, high\u2011contrast, and include a clear call to action\n- Pair with a push campaign for lift"
+  },
+  {
+    "id": "935c03f2-bae7-48c2-904f-aee0e1ca7b16",
+    "title": "Troubleshooting: Menu items not appearing",
+    "category": "Troubleshooting",
+    "summary": "Diagnose why products or collections aren\u2019t visible in the app.",
+    "lastEdited": "2025-10-07T22:18:58.957Z",
+    "markdown": "### Symptoms\n\n- Category shows 0 items\n- Collection appears empty\n\n### Quick checks\n\n1. Confirm products are in stock and visible in your POS/ecom system\n2. Ensure the collection filter has results\n3. In Admin Panel, run a manual sync if available\n\n### Deeper checks\n\n- Webhooks enabled and healthy\n- Integration credentials valid and not expired\n- Recent errors in Admin Panel logs\n\n### Fix\n\n- Update product visibility and re\u2011sync\n- Re\u2011save collection filters\n- Reconnect integration if tokens expired\n\n### Verify success\n\n- Items appear in app within 5\u201315 minutes"
+  },
+  {
+    "id": "4d29072d-08c3-4399-b0a7-776ae482c176",
+    "title": "How\u2011to: Create collections for the home page",
+    "category": "How-to",
+    "summary": "Build product collections that power home page carousels.",
+    "lastEdited": "2025-10-08T02:08:25.051Z",
+    "markdown": "### Overview\n\nCreate curated collections to feature products on your app home page.\n\n### Steps\n\n1. Open Admin Panel \u2192 Content \u2192 Collections\n2. New collection \u2192 Name it (e.g., Best Sellers, Staff Picks)\n3. Add filters or select products manually\n4. Save and set Visibility: On\n5. Assign the collection to a Home section (Home layout \u2192 choose slot)\n\n### Verify success\n\n- Collection appears on the app home page within 5\u201315 minutes\n\n### Tips\n\n- Keep 6\u201312 items per collection for scannability\n- Refresh weekly to keep content fresh"
+  },
+  {
+    "id": "3e1f3c2e-84f8-4763-aab4-0513a6979e92",
+    "title": "Getting started \u2014 Accessing your account",
+    "category": "",
+    "summary": "",
+    "lastEdited": "2025-10-06T23:09:22.315Z",
+    "markdown": "### Summary\n\nHelp a new user sign in for the first time and confirm access.\n\n### Prerequisites\n\n- Invitation email sent by an admin\n- Supported browser or latest app version\n\n### Steps\n\n1. Open the sign-in page or app\n2. Enter the work email and select Continue\n3. Verify email via 6\u2011digit code or magic link\n4. Set a password if prompted\n5. Confirm you can access the home screen and menu\n\n### Expected outcome\n\nUser can log in and see the dashboard without errors.\n\n### Troubleshooting\n\n- No email received: check spam and allowlist the sender; request a new code\n- Code expired: request a new one and use within 10 minutes\n- \u201cAccount not found\u201d: confirm invitation was sent to the same email\n\n### Notes and links\n\n- Reset password link\n- Status page for outages"
+  },
+  {
+    "id": "dbf299ce-d3f4-4bf1-9cfa-9024c7ac1518",
+    "title": "FAQ \u2014 Billing and invoices",
+    "category": "",
+    "summary": "",
+    "lastEdited": "2025-10-06T23:09:22.315Z",
+    "markdown": "### Summary\n\nCommon billing and invoice questions and short answers.\n\n### Prerequisites\n\n- Admin or billing contact access\n\n### Steps\n\n1. View invoice history in Admin panel \u2192 Billing\n2. Update payment method under Payment\n3. Download latest invoice PDF from the Invoices tab\n\n### Expected outcome\n\nBilling contact can manage payment and retrieve invoices.\n\n### Troubleshooting\n\n- Payment failed: verify card limits and address; retry\n- Can\u2019t find invoice: adjust date range or contact support\n\n### Notes and links\n\n- W\u20119, vendor info, and support email"
+  },
+  {
+    "id": "a00774cb-dba1-4fef-9a40-3c6d9ddf0722",
+    "title": "How\u2011to \u2014 Invite a teammate",
+    "category": "",
+    "summary": "",
+    "lastEdited": "2025-10-06T23:09:22.315Z",
+    "markdown": "### Summary\n\nShow admins how to add a teammate with the right permissions.\n\n### Prerequisites\n\n- Admin role in the workspace\n\n### Steps\n\n1. Go to Admin panel \u2192 Users\n2. Select Invite\n3. Enter email and choose a role\n4. Send invite\n\n### Expected outcome\n\nTeammate receives an invite and appears in the Users list as Pending until accepted.\n\n### Troubleshooting\n\n- Invite not received: resend invite and check spam\n- Wrong role: edit user and change role after invite\n\n### Notes and links\n\n- Roles and permissions reference"
+  },
+  {
+    "id": "ff4e04a6-2ecc-49af-82b3-fe0c3d02d1f9",
+    "title": "Troubleshooting \u2014 Can\u2019t receive 2FA codes",
+    "category": "",
+    "summary": "",
+    "lastEdited": "2025-10-06T23:09:22.315Z",
+    "markdown": "### Summary\n\nResolve issues where users don\u2019t receive two\u2011factor authentication codes.\n\n### Prerequisites\n\n- 2FA enabled on the account\n- Correct phone number or authenticator app installed\n\n### Steps\n\n1. Verify the phone number or app is listed under security settings\n2. Check device time is set to automatic\n3. Try backup method: SMS vs authenticator app\n4. Regenerate recovery codes and store securely\n5. If still failing, disable and re\u2011enable 2FA to re\u2011bind the device\n\n### Expected outcome\n\nUser receives a valid code and can complete sign\u2011in.\n\n### Troubleshooting\n\n- Delayed SMS: switch to authenticator app\n- Time skew error: enable automatic time sync on device\n- Lost device: use recovery codes or admin-assisted reset\n\n### Notes and links\n\n- Link to security best practices"
+  }
+]

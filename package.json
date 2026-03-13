@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:content": "tsx scripts/build-content.ts",
-    "build:full": "npm run build:content && npm run build && npx tsx scripts/prerender.ts && npx pagefind --site dist",
+    "build:full": "npm run build:content && npm run build && npx tsx scripts/prerender.ts && npx tsx scripts/generate-sitemap.ts && npx pagefind --site dist",
     "preview": "vite preview",
     "deploy": "npm run build:full && npx wrangler pages deploy dist --project-name=dopetech-support --branch=main",
     "typecheck": "tsc -b"

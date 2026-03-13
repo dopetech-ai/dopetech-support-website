@@ -28,7 +28,7 @@ function sanitizeSlug(raw: string): string {
 
 /**
  * Match a category value from Notion to a category slug.
- * Tries exact slug match first, then case-insensitive name match.
+ * Tries exact slug match, case-insensitive name match, then slugified name match.
  */
 function matchCategory(notionCategory: string): string | null {
   // Direct slug match
@@ -39,7 +39,13 @@ function matchCategory(notionCategory: string): string | null {
   const match = CATEGORIES.find(
     (c) => c.name.toLowerCase() === lower || c.slug === lower,
   )
-  return match?.slug ?? null
+  if (match) return match.slug
+
+  // Slugified name match (handles "Compliance/App Store Requirements" → "compliance-app-store-requirements")
+  const slugified = sanitizeSlug(notionCategory)
+  if (isValidCategory(slugified)) return slugified
+
+  return null
 }
 
 export async function buildAllArticles(): Promise<ContentData> {

@@ -105,14 +105,14 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
   let cursor: string | undefined
 
   do {
-    // SDK v5 renamed databases.query -> dataSources.query
-    // Filter by "Publish Status" select property = "Live"
+    // SDK v5: dataSources.query
+    // Filter by Status (status type) = "Live"
     const response = await withRateLimit(() =>
       client.dataSources.query({
         data_source_id: databaseId,
         filter: {
-          property: 'Publish Status',
-          select: { equals: 'Live' },
+          property: 'Status',
+          status: { equals: 'Live' },
         },
         start_cursor: cursor,
       }),
@@ -123,26 +123,14 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
       const p = page as PageObjectResponse
       const props = p.properties
 
-      // Title: look for Name, Title, title, or Page
-      const title = extractTitle(
-        props.Name ?? props.Title ?? props.title ?? props.Page ?? props.page,
-      )
+      // Title: "Name" property (title type)
+      const title = extractTitle(props.Name)
 
-      // Slug: use Slug property if present, otherwise auto-generate from title
-      const rawSlug = extractRichTextPlain(props.Slug ?? props.slug)
-      const slug = rawSlug || titleToSlug(title)
+      // Slug: auto-generated from title (no Slug property in this database)
+      const slug = titleToSlug(title)
 
-      // Category: look for Category or category
-      const category = extractSelect(props.Category ?? props.category)
-
-      // Meta description: look for Meta Description, Description, Summary
-      const metaDescription = extractRichTextPlain(
-        props['Meta Description'] ??
-          props.Description ??
-          props.description ??
-          props.Summary ??
-          props.summary,
-      )
+      // Category: "Category" select property — pass raw name to build-articles for matching
+      const category = extractSelect(props.Category)
 
       if (!title || !slug || !category) {
         console.warn(
@@ -156,7 +144,7 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
         title,
         slug,
         category,
-        metaDescription: metaDescription || '',
+        metaDescription: '',
         lastEdited: p.last_edited_time,
       })
     }
@@ -200,17 +188,6 @@ function extractTitle(prop: unknown): string {
   const p = prop as Record<string, unknown>
   if (p.type === 'title' && Array.isArray(p.title)) {
     return (p.title as Array<{ plain_text: string }>)
-      .map((t) => t.plain_text)
-      .join('')
-  }
-  return ''
-}
-
-function extractRichTextPlain(prop: unknown): string {
-  if (!prop || typeof prop !== 'object') return ''
-  const p = prop as Record<string, unknown>
-  if (p.type === 'rich_text' && Array.isArray(p.rich_text)) {
-    return (p.rich_text as Array<{ plain_text: string }>)
       .map((t) => t.plain_text)
       .join('')
   }

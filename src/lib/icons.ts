@@ -1,36 +1,24 @@
 import {
   Rocket,
-  Smartphone,
-  Globe,
-  Monitor,
-  HelpCircle,
-  FileText,
-  Wrench,
+  Settings,
+  Bell,
   MessageCircleQuestion,
-  BookOpen,
-  CreditCard,
-  UserCog,
-  Shield,
   Puzzle,
-  Megaphone,
+  TrendingUp,
+  Shield,
+  FileText,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const iconMap: Record<string, LucideIcon> = {
   Rocket,
-  Smartphone,
-  Globe,
-  Monitor,
-  HelpCircle,
-  FileText,
-  Wrench,
+  Settings,
+  Bell,
   MessageCircleQuestion,
-  BookOpen,
-  CreditCard,
-  UserCog,
-  Shield,
   Puzzle,
-  Megaphone,
+  TrendingUp,
+  Shield,
+  FileText,
 }
 
 export function getIcon(name: string): LucideIcon {

@@ -28,3 +28,8 @@ dist-ssr
 
 # Build artifacts
 content/
+src/data/
+
+# Environment
+.env
+.env.local

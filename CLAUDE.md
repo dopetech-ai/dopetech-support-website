@@ -33,12 +33,14 @@ Required for deploy:
 - `CLOUDFLARE_ACCOUNT_ID`
 
 ## Notion Database Schema
-Articles database should have these properties:
-- `Name` (title) — Article title
-- `Slug` (rich_text) — URL slug (auto-sanitized during build)
-- `Category` (select) — One of: Getting Started, DopeApps, DopeSites, DopeTender, How Do I...?
-- `Status` (status) — Must be "Published" to appear on site
-- `Meta Description` (rich_text) — SEO description
+"Support Hub Database" — data source ID `2af36807-99a6-80b9-90a7-000b5870b126`
+
+Key properties used by the build:
+- `Name` (title) — Article title (also used to auto-generate URL slugs)
+- `Status` (status) — Must be **"Live"** to appear on site
+- `Category` (select) — One of: Onboarding Tasks, Admin Panel, Push Notifications, Customer Questions, Integrations, Marketing and Growth, Compliance/App Store Requirements, Support Documents
+
+Other properties (Type, Product Association, Integration Association) are available in Notion for organization but not currently used by the website.
 
 ## Design System
 DopeTech dark neon theme. Tokens in `src/styles/theme.css` via Tailwind `@theme`.

@@ -77,6 +77,9 @@ export const RESERVED_SLUGS = new Set([
   'fonts',
   '_headers',
   'api',
+  'product-updates',
+  'developer-docs',
+  'contact',
 ])
 
 export function isValidCategory(slug: string): boolean {

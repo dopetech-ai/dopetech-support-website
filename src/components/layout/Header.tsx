@@ -19,6 +19,18 @@ export function Header() {
     document.body.style.overflow = ''
   }, [location.pathname])
 
+  // Dynamic page title
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      '/': 'Home',
+      '/product-updates': 'Product Updates',
+      '/developer-docs': 'Developer Docs',
+      '/contact': 'Contact Support',
+    }
+    const page = titles[location.pathname] || 'Page'
+    document.title = `${page} | DopeTech Support Hub`
+  }, [location.pathname])
+
   function toggleMenu() {
     setMenuOpen((prev) => {
       document.body.style.overflow = prev ? '' : 'hidden'
@@ -29,54 +41,81 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-dt-bg/90 backdrop-blur-md border-b border-dt-border'
+          ? 'bg-[#080816]/90 backdrop-blur-xl border-b border-dt-cyan/[0.08] shadow-[0_4px_30px_rgba(0,136,255,0.06)]'
           : 'bg-transparent',
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-18 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/dopetech-logo.png"
               alt={SITE_CONFIG.name}
               className="h-8 w-auto"
             />
-            <span className="text-sm font-medium text-dt-text-muted">
-              Support
+            <span className="hidden sm:block h-5 w-px bg-white/20 translate-y-[9px]" />
+            <span className="hidden sm:block font-montserrat text-sm font-medium tracking-wide text-dt-text-muted transition-colors group-hover:text-dt-text translate-y-[9px]">
+              Support Hub
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             <Link
               to="/"
-              className="text-sm text-dt-text-muted transition-colors hover:text-dt-text"
+              className={cn(
+                'rounded-full px-4 py-2 text-sm transition-all duration-200',
+                location.pathname === '/'
+                  ? 'bg-white/[0.08] text-dt-text border border-white/[0.08]'
+                  : 'text-dt-text-muted hover:text-dt-text hover:bg-white/[0.05]',
+              )}
             >
-              Home
+              Help Center
             </Link>
+            <Link
+              to="/product-updates"
+              className={cn(
+                'rounded-full px-4 py-2 text-sm transition-all duration-200',
+                location.pathname === '/product-updates'
+                  ? 'bg-white/[0.08] text-dt-text border border-white/[0.08]'
+                  : 'text-dt-text-muted hover:text-dt-text hover:bg-white/[0.05]',
+              )}
+            >
+              Product Updates
+            </Link>
+            <Link
+              to="/developer-docs"
+              className={cn(
+                'rounded-full px-4 py-2 text-sm transition-all duration-200',
+                location.pathname === '/developer-docs'
+                  ? 'bg-white/[0.08] text-dt-text border border-white/[0.08]'
+                  : 'text-dt-text-muted hover:text-dt-text hover:bg-white/[0.05]',
+              )}
+            >
+              Developer Docs
+            </Link>
+          </nav>
+
+          {/* CTA buttons */}
+          <div className="hidden items-center gap-3 lg:flex">
             <a
-              href={SITE_CONFIG.mainSiteUrl}
-              className="text-sm text-dt-text-muted transition-colors hover:text-dt-text"
+              href={SITE_CONFIG.bookDemoUrl}
+              className="relative rounded-full bg-gradient-to-r from-dt-cyan to-dt-blue px-5 py-2 text-sm font-semibold text-dt-bg transition-all duration-300 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] hover:brightness-110"
               target="_blank"
               rel="noopener noreferrer"
             >
-              dopetech.ai
+              Book a Demo
+              <span className="ml-1.5">→</span>
             </a>
-            <a
-              href={`mailto:${SITE_CONFIG.email}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-dt-cyan/30 px-4 py-1.5 text-sm font-medium text-dt-cyan transition-all hover:border-dt-cyan/60 hover:shadow-[0_0_12px_rgba(0,229,255,0.2)]"
-            >
-              Contact Support
-            </a>
-          </nav>
+          </div>
 
           {/* Mobile menu button */}
           <button
             onClick={toggleMenu}
-            className="relative flex h-10 w-10 items-center justify-center md:hidden"
+            className="relative flex h-10 w-10 items-center justify-center lg:hidden"
             aria-label="Toggle menu"
           >
             <span
@@ -102,32 +141,58 @@ export function Header() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="border-t border-dt-border bg-dt-bg/95 backdrop-blur-md md:hidden">
+      <div
+        className={cn(
+          'overflow-hidden transition-all duration-300 lg:hidden',
+          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
+        )}
+      >
+        <div className="border-t border-white/[0.06] bg-[#080816]/95 backdrop-blur-xl">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
             <Link
               to="/"
-              className="rounded-lg px-3 py-2 text-dt-text-muted transition-colors hover:bg-dt-bg-elevated hover:text-dt-text"
+              className={cn(
+                'rounded-xl px-4 py-3 text-sm transition-colors',
+                location.pathname === '/'
+                  ? 'bg-white/[0.08] text-dt-text'
+                  : 'text-dt-text-muted hover:bg-white/[0.05] hover:text-dt-text',
+              )}
             >
-              Home
+              Help Center
+            </Link>
+            <Link
+              to="/product-updates"
+              className={cn(
+                'rounded-xl px-4 py-3 text-sm transition-colors',
+                location.pathname === '/product-updates'
+                  ? 'bg-white/[0.08] text-dt-text'
+                  : 'text-dt-text-muted hover:bg-white/[0.05] hover:text-dt-text',
+              )}
+            >
+              Product Updates
+            </Link>
+            <Link
+              to="/developer-docs"
+              className={cn(
+                'rounded-xl px-4 py-3 text-sm transition-colors',
+                location.pathname === '/developer-docs'
+                  ? 'bg-white/[0.08] text-dt-text'
+                  : 'text-dt-text-muted hover:bg-white/[0.05] hover:text-dt-text',
+              )}
+            >
+              Developer Docs
             </Link>
             <a
-              href={SITE_CONFIG.mainSiteUrl}
-              className="rounded-lg px-3 py-2 text-dt-text-muted transition-colors hover:bg-dt-bg-elevated hover:text-dt-text"
+              href={SITE_CONFIG.bookDemoUrl}
+              className="mt-2 rounded-xl bg-gradient-to-r from-dt-cyan to-dt-blue px-4 py-3 text-center text-sm font-semibold text-dt-bg"
               target="_blank"
               rel="noopener noreferrer"
             >
-              dopetech.ai
-            </a>
-            <a
-              href={`mailto:${SITE_CONFIG.email}`}
-              className="mt-2 rounded-lg border border-dt-cyan/30 px-3 py-2 text-center text-sm font-medium text-dt-cyan"
-            >
-              Contact Support
+              Book a Demo →
             </a>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   )
 }

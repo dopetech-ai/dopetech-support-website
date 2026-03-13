@@ -20,7 +20,7 @@ export function CategoryCard({
       <div className="mb-3 inline-flex rounded-xl bg-dt-cyan-muted p-2.5">
         <Icon className="h-5 w-5 text-dt-cyan" />
       </div>
-      <h2 className="font-display text-lg font-semibold text-dt-text">
+      <h2 className="font-heading text-lg font-semibold text-dt-text">
         {category.name}
       </h2>
       <p className="mt-1.5 text-sm leading-relaxed text-dt-text-muted">

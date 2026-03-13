@@ -26,14 +26,14 @@
   /* Text */
   --color-dt-text: #ffffff;
   --color-dt-text-muted: #9999b0;
-  --color-dt-text-dim: #666680;
+  --color-dt-text-dim: #8585a0;
 
   /* Borders */
   --color-dt-border: rgba(255, 255, 255, 0.1);
   --color-dt-border-accent: rgba(0, 229, 255, 0.4);
 
   /* Typography */
-  --font-family-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-family-heading: 'Space Grotesk', -apple-system, sans-serif;
   --font-family-sans: 'Inter', -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
 

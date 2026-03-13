@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import DOMPurify from 'dompurify'
 import { Search } from 'lucide-react'
 import { cn } from '@/lib/cn'
 
@@ -35,7 +36,7 @@ export function SearchInput({ size = 'default', className }: SearchInputProps) {
     try {
       // Load Pagefind dynamically from the built index at runtime
       const pagefindPath = '/_pagefind/pagefind.js'
-      const pf = await new Function('return import("' + pagefindPath + '")')() as PagefindInstance
+      const pf = await import(/* @vite-ignore */ pagefindPath) as PagefindInstance
       pagefindRef.current = pf
     } catch {
       // Pagefind not available (dev mode or build not run)
@@ -152,7 +153,7 @@ export function SearchInput({ size = 'default', className }: SearchInputProps) {
                     {result.excerpt && (
                       <p
                         className="mt-0.5 text-xs text-dt-text-dim line-clamp-2 [&_mark]:bg-dt-cyan/20 [&_mark]:text-dt-cyan"
-                        dangerouslySetInnerHTML={{ __html: result.excerpt }}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.excerpt) }}
                       />
                     )}
                   </button>

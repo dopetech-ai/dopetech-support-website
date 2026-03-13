@@ -34,7 +34,7 @@
 /* ── Base styles ───────────────────────────────────────────────────── */
 
 body {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-family-sans, 'Inter', -apple-system, sans-serif);
   background-color: var(--color-dt-bg);
   color: var(--color-dt-text);
   -webkit-font-smoothing: antialiased;

@@ -36,7 +36,7 @@ export function CategoryPage() {
           <Icon className="h-6 w-6 text-dt-cyan" />
         </div>
         <div>
-          <h1 className="font-display text-[length:var(--font-size-h1)] font-bold text-dt-text">
+          <h1 className="font-heading text-[length:var(--font-size-h1)] font-bold text-dt-text">
             {def.name}
           </h1>
           <p className="mt-1 text-dt-text-muted">{def.description}</p>

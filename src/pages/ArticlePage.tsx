@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
+import DOMPurify from 'dompurify'
 import { Breadcrumb } from '@/components/common/Breadcrumb'
 import { ContactCTA } from '@/components/common/ContactCTA'
 import { getArticleBySlug, getCategoryDef } from '@/lib/content'
@@ -68,7 +69,7 @@ export function ArticlePage() {
 
       {/* Article header */}
       <header className="mb-10">
-        <h1 className="font-display text-[length:var(--font-size-h1)] font-bold leading-tight text-dt-text">
+        <h1 className="font-heading text-[length:var(--font-size-h1)] font-bold leading-tight text-dt-text">
           {article.title}
         </h1>
         <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-dt-text-muted">
@@ -89,7 +90,7 @@ export function ArticlePage() {
       {/* Article body */}
       <article
         className="prose prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: article.html }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.html) }}
       />
 
       <ContactCTA />

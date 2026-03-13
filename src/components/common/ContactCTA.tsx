@@ -4,7 +4,7 @@ import { SITE_CONFIG } from '@/config/site'
 export function ContactCTA() {
   return (
     <section className="mt-16 rounded-2xl border border-dt-border bg-dt-bg-card p-8 text-center">
-      <h2 className="font-display text-xl font-semibold text-dt-text">
+      <h2 className="font-heading text-xl font-semibold text-dt-text">
         Still need help?
       </h2>
       <p className="mt-2 text-sm text-dt-text-muted">

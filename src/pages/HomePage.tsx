@@ -21,7 +21,7 @@ export function HomePage() {
           <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-dt-cyan/[0.04] blur-[120px]" />
         </div>
 
-        <h1 className="font-display text-[length:var(--font-size-hero)] font-bold leading-tight text-dt-text">
+        <h1 className="font-heading text-[length:var(--font-size-hero)] font-bold leading-tight text-dt-text">
           How can we help you?
         </h1>
         <p className="mx-auto mt-4 max-w-lg text-lg text-dt-text-muted">

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:content": "tsx scripts/build-content.ts",
-    "build:full": "npm run build:content && npm run build && npx pagefind --site dist",
+    "build:full": "npm run build:content && npm run build && npx tsx scripts/prerender.ts && npx pagefind --site dist",
     "preview": "vite preview",
     "deploy": "npm run build:full && npx wrangler pages deploy dist --project-name=dopetech-support --branch=main",
     "typecheck": "tsc -b"
@@ -30,6 +30,7 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "pagefind": "^1.4.0",
     "tailwindcss": "^4.1.0",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",

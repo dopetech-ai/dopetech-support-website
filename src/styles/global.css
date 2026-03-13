@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./theme.css";
+
+/* ── Self-hosted fonts ─────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Base styles ───────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-dt-bg);
+  color: var(--color-dt-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Prose overrides for dark theme article content ────────────────── */
+
+.prose {
+  --tw-prose-body: var(--color-dt-text-muted);
+  --tw-prose-headings: var(--color-dt-text);
+  --tw-prose-links: var(--color-dt-cyan);
+  --tw-prose-bold: var(--color-dt-text);
+  --tw-prose-counters: var(--color-dt-text-dim);
+  --tw-prose-bullets: var(--color-dt-text-dim);
+  --tw-prose-hr: var(--color-dt-border);
+  --tw-prose-quotes: var(--color-dt-text-muted);
+  --tw-prose-quote-borders: var(--color-dt-cyan);
+  --tw-prose-captions: var(--color-dt-text-dim);
+  --tw-prose-code: var(--color-dt-cyan);
+  --tw-prose-pre-code: var(--color-dt-text-muted);
+  --tw-prose-pre-bg: var(--color-dt-bg);
+  --tw-prose-th-borders: var(--color-dt-border);
+  --tw-prose-td-borders: var(--color-dt-border);
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.prose a:hover {
+  color: var(--color-dt-cyan-bright);
+}
+
+.prose pre {
+  border: 1px solid var(--color-dt-border);
+  border-radius: var(--radius-md);
+}
+
+.prose img {
+  border-radius: var(--radius-md);
+}
+
+/* ── Custom scrollbar ──────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dt-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dt-text-dim);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dt-text-muted);
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

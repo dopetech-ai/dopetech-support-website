@@ -1,0 +1,60 @@
+/* ================================
+   DopeTech Support — Design Tokens
+   Tailwind CSS 4 @theme directive
+   Ported from dopetech-website variables.css
+================================ */
+
+@theme {
+  /* Dark Theme Backgrounds */
+  --color-dt-bg: #050508;
+  --color-dt-bg-elevated: #0a0a12;
+  --color-dt-bg-card: #12121c;
+  --color-dt-bg-card-hover: #1a1a28;
+
+  /* Primary Accent — Neon Cyan */
+  --color-dt-cyan: #00e5ff;
+  --color-dt-cyan-glow: rgba(0, 229, 255, 0.5);
+  --color-dt-cyan-bright: #40eeff;
+  --color-dt-cyan-muted: rgba(0, 229, 255, 0.15);
+
+  /* Secondary Accents */
+  --color-dt-blue: #0088ff;
+  --color-dt-blue-glow: rgba(0, 136, 255, 0.5);
+  --color-dt-pink: #ff00ff;
+  --color-dt-orange: #ff6600;
+
+  /* Text */
+  --color-dt-text: #ffffff;
+  --color-dt-text-muted: #9999b0;
+  --color-dt-text-dim: #666680;
+
+  /* Borders */
+  --color-dt-border: rgba(255, 255, 255, 0.1);
+  --color-dt-border-accent: rgba(0, 229, 255, 0.4);
+
+  /* Typography */
+  --font-family-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-family-sans: 'Inter', -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+
+  /* Type Scale */
+  --font-size-hero: clamp(2.5rem, 5vw, 4rem);
+  --font-size-h1: clamp(2rem, 4vw, 3rem);
+  --font-size-h2: clamp(1.5rem, 3vw, 2rem);
+  --font-size-h3: clamp(1.125rem, 2vw, 1.375rem);
+
+  /* Spacing */
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadows — Neon Glow */
+  --shadow-glow-cyan: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.3);
+  --shadow-glow-blue: 0 0 20px rgba(0, 136, 255, 0.5), 0 0 40px rgba(0, 136, 255, 0.3);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

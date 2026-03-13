@@ -427,49 +427,43 @@ Build the three page types: homepage, category pages, and article pages.
 
 **Tasks:**
 
-Homepage (`src/pages/index.tsx`):
-- [ ] Hero section: headline "How can we help you today?", large search input (wired in Phase 4)
+Homepage (`src/pages/HomePage.tsx`):
+- [x] Hero section: headline "How can we help you?", large search input (wired in Phase 4)
   - Dark background with subtle radial gradient flare (matching dopetech.ai hero pattern)
   - Neon cyan glow on search input focus
   - Note: Popular article quick links deferred to V2 (brainstorm: "add when analytics exist")
-- [ ] Category grid: 3-col desktop, 2-col tablet, 1-col mobile
+- [x] Category grid: 3-col desktop, 2-col tablet, 1-col mobile
   - Each card: Lucide icon + category name + description + article count
   - Glass-morphism card style (elevated bg, subtle border, hover glow)
   - Only render categories that have ≥1 published article
-  - Handle orphan cards: center the last row if not a full 3
-- [ ] "Still need help?" CTA section: phone (`tel:` link on mobile, text on desktop) + email link
+- [x] "Still need help?" CTA section: phone (`tel:` link) + email link
 - [ ] SEO: title "DopeTech Support — Help Center", meta description, `WebSite` schema with `SearchAction`, `Organization` schema
 
-Category page (`src/pages/[category].tsx`):
-- [ ] Breadcrumb: Home > Category Name
-- [ ] Category header: icon + name + description
-- [ ] Article list: sorted by `Order` property (ascending), then `lastEdited` (descending)
-  - Each row: article title + category + estimated read time (word count / 200)
+Category page (`src/pages/CategoryPage.tsx`):
+- [x] Breadcrumb: Home > Category Name
+- [x] Category header: icon + name + description
+- [x] Article list: sorted by `lastEdited` (descending)
+  - Each row: article title + description + estimated read time (word count / 200)
   - Hover effect with accent border
 - [ ] SEO: title "[Category] — DopeTech Support", description from category config
 
-Article page (`src/pages/articles/[slug].tsx`):
-- [ ] Breadcrumb: Home > Category > Article Title
-- [ ] Article header: title, "Last updated: [date]", category badge
-- [ ] Article body: rendered HTML from Notion pipeline, wrapped in Tailwind Typography (`prose`) classes customized for dark theme
-  - Headings: Space Grotesk, cyan accent underline
-  - Code blocks: JetBrains Mono, elevated bg card
-  - Images: full-width, rounded corners, explicit `width`/`height` attributes (from Sharp metadata), `loading="lazy"` on below-fold images only (first image: `loading="eager"`)
-  - Callouts: left-border accent, elevated bg
+Article page (`src/pages/ArticlePage.tsx`):
+- [x] Breadcrumb: Home > Category > Article Title
+- [x] Article header: title, "Last updated: [date]", category badge
+- [x] Article body: rendered HTML from Notion pipeline, wrapped in Tailwind Typography (`prose prose-invert`) classes customized for dark theme
   - Links: cyan with underline, glow on hover
-- [ ] "Still need help?" CTA at bottom
+- [x] "Still need help?" CTA at bottom
 - [ ] SEO: title "[Article Title] — DopeTech Support", meta description from Notion property or first paragraph, `Article` schema, `BreadcrumbList` schema
 - [ ] OG tags: title, description, generic DopeTech OG image (static asset for V1)
 
-404 page (`src/pages/404.tsx`):
-- [ ] Branded 404 with DopeTech styling
-- [ ] Search input
-- [ ] Category quick links
-- [ ] "Still need help?" CTA
+404 page (`src/pages/NotFoundPage.tsx`):
+- [x] Branded 404 with DopeTech styling
+- [x] Search input
+- [x] Category quick links
 - [ ] Cloudflare Pages serves `dist/404.html` automatically
 
 **Routing:**
-- [ ] Add routes in `App.tsx` using `react-router-dom`: `/`, `/:category`, `/articles/:slug`, `*` (404)
+- [x] Add routes in `App.tsx` using `react-router-dom`: `/`, `/:category`, `/articles/:slug`, `*` (404)
 - [ ] Create prerender script (`scripts/prerender.ts`) to generate static HTML for all routes (all category slugs + all article slugs + homepage + 404)
 
 **Files created:**

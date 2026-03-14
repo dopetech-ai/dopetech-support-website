@@ -80,6 +80,9 @@ export const RESERVED_SLUGS = new Set([
   'product-updates',
   'developer-docs',
   'contact',
+  'dopeapps',
+  'dopesites',
+  'dopetender',
 ])
 
 export function isValidCategory(slug: string): boolean {

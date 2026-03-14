@@ -6,6 +6,7 @@ import { ArticlePage } from '@/pages/ArticlePage'
 import { ProductUpdatesPage } from '@/pages/ProductUpdatesPage'
 import { DeveloperDocsPage } from '@/pages/DeveloperDocsPage'
 import { ContactPage } from '@/pages/ContactPage'
+import { ProductSupportPage } from '@/pages/ProductSupportPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 
 export function App() {
@@ -16,6 +17,9 @@ export function App() {
         <Route path="/product-updates" element={<ProductUpdatesPage />} />
         <Route path="/developer-docs" element={<DeveloperDocsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/dopeapps" element={<ProductSupportPage />} />
+        <Route path="/dopesites" element={<ProductSupportPage />} />
+        <Route path="/dopetender" element={<ProductSupportPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/:category" element={<CategoryPage />} />

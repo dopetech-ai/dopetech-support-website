@@ -17,90 +17,222 @@ const CATEGORIES = [
   'DopeApps',
   'DopeSites',
   'DopeTender',
-  'Admin Panel',
-  'Integrations',
-  'Analytics',
+  'Platform',
+  'Support Hub',
+  'Infrastructure',
 ]
 
 const UPDATES: Update[] = [
+  // --- March 2026 ---
   {
-    id: '1',
+    id: '202603-2',
     month: 'March 2026',
-    date: 'March 10, 2026',
-    title: 'DopeTech Product Updates for March 10, 2026',
+    date: 'March 13, 2026',
+    title: 'Support Hub: P0 Production Fixes & New Pages',
     excerpt:
-      'New admin dashboard redesign, improved push notification scheduling, and enhanced analytics reporting for multi-location dispensaries...',
-    categories: ['Admin Panel', 'Analytics'],
+      'Resolved 7 production-blocking issues including XSS sanitization with DOMPurify, font rendering fix, image optimization (favicon 2.1MB→37KB, logo 288KB→8KB), CSP headers, WCAG AA contrast compliance, and CSP-safe Pagefind import. Added Contact Support form, Product Updates page, Developer Docs coming soon page, and product-specific support pages for DopeApps, DopeSites, and DopeTender.',
+    categories: ['Support Hub', 'Infrastructure'],
     gradient: 'from-dt-cyan/80 to-dt-blue/80',
     features: [
-      'Admin dashboard redesign',
-      'Push notification scheduling v2',
-      'Multi-location analytics',
+      'DOMPurify XSS sanitization',
+      'Contact support form (Formsubmit)',
+      'Product-specific support pages',
+      'Product Updates & Developer Docs pages',
+      'CSP + HSTS security headers',
+      'Image optimization (98% size reduction)',
     ],
   },
   {
-    id: '2',
+    id: '202603-1',
     month: 'March 2026',
-    date: 'March 3, 2026',
-    title: 'DopeTech Product Updates for March 3, 2026',
+    date: 'March 12, 2026',
+    title: 'Support Hub Launch: support.dopetech.ai Goes Live',
     excerpt:
-      'Introducing new loyalty program templates, improved menu sync performance, and Dutchie POS integration enhancements...',
-    categories: ['DopeApps', 'Integrations'],
+      'Launched the DopeTech Support Hub — a customer-facing help center powered by React 19, Vite 7, Tailwind CSS 4, and Notion as CMS. Features include client-side Pagefind search, prerendered HTML for SEO, automatic sitemap generation, GitHub Actions for deploy and scheduled rebuilds, and the DopeTech dark neon design system.',
+    categories: ['Support Hub', 'Platform'],
     gradient: 'from-dt-blue/80 to-[#6366f1]/80',
     features: [
-      'Loyalty program templates',
-      'Menu sync performance boost',
-      'Dutchie POS integration v3',
+      'Notion CMS content pipeline',
+      'Pagefind client-side search',
+      'Prerendered static HTML for SEO',
+      'GitHub Actions CI/CD + scheduled rebuilds',
+      'Cloudflare Pages deployment',
+      '8 support categories wired to Notion database',
     ],
   },
+  // --- February 2026 ---
   {
-    id: '3',
+    id: '202602-4',
     month: 'February 2026',
-    date: 'February 24, 2026',
-    title: 'DopeTech Product Updates for February 24, 2026',
+    date: 'February 26, 2026',
+    title: 'Website Polish: Blog Images, Favicon & Deploy Fixes',
     excerpt:
-      'New mobile app builder features including custom checkout flows, age-gate improvements, and in-app messaging capabilities...',
-    categories: ['DopeApps', 'DopeSites'],
+      'Updated blog post images and styling across the main dopetech.ai website. Replaced favicon with the official DopeTech logo in SVG, PNG, and Apple touch icon formats. Fixed deploy script configuration.',
+    categories: ['Platform'],
     gradient: 'from-[#6366f1]/80 to-[#a855f7]/80',
     features: [
-      'Custom checkout flows',
-      'Age-gate improvements',
-      'In-app messaging',
+      'Blog images and styling update',
+      'New DopeTech favicon (SVG + PNG + Apple touch)',
+      'Deploy script fix',
     ],
   },
   {
-    id: '4',
+    id: '202602-3',
     month: 'February 2026',
-    date: 'February 10, 2026',
-    title: 'DopeTech Product Updates for February 10, 2026',
+    date: 'February 24, 2026',
+    title: 'Mobile Optimization, Privacy Policy & Claims Audit',
     excerpt:
-      'DopeTender kiosk mode now supports offline ordering, plus new compliance document auto-generation for state requirements...',
-    categories: ['DopeTender', 'Admin Panel'],
+      'Comprehensive mobile optimization for 390px screens. Added Privacy Policy page. Completed claims audit to fix false or misleading marketing statements. Added DopeTender kiosk carousel and UI polish across all product pages.',
+    categories: ['Platform', 'DopeTender'],
     gradient: 'from-dt-cyan/80 to-[#6366f1]/80',
     features: [
-      'Offline kiosk ordering',
-      'Compliance doc auto-generation',
-      'State requirement templates',
+      'Mobile optimization (390px screens)',
+      'Privacy Policy page',
+      'Claims audit and copy corrections',
+      'DopeTender kiosk carousel',
+      'UI polish across all pages',
     ],
   },
   {
-    id: '5',
-    month: 'January 2026',
-    date: 'January 20, 2026',
-    title: 'DopeTech Product Updates for January 20, 2026',
+    id: '202602-2',
+    month: 'February 2026',
+    date: 'February 20, 2026',
+    title: 'Comprehensive Site Audit: SEO, Compliance & Copy',
     excerpt:
-      'Major release: new website builder themes, SEO optimization toolkit, and Google Business Profile integration...',
-    categories: ['DopeSites', 'Integrations'],
+      'Major site audit covering SEO improvements, compliance copy, and messaging refinement. Replaced react-helmet-async with vanilla DOM-based SEO. Softened ownership language for compliance. Replaced all green accents with DopeTech blue color scheme. Hero headline changed from "Cannabis" to "Dispensary." Performance improvements including code splitting, lazy loading, and GPU optimization.',
+    categories: ['Platform', 'DopeSites'],
     gradient: 'from-dt-blue/80 to-dt-cyan/80',
     features: [
-      'New website builder themes',
-      'SEO optimization toolkit',
-      'Google Business Profile sync',
+      'SEO overhaul with vanilla DOM approach',
+      'Compliance messaging refinement',
+      'Color scheme: green → blue accent',
+      'Hero: "Cannabis" → "Dispensary"',
+      'Code splitting & lazy loading',
+      '10 new blog posts added',
+    ],
+  },
+  {
+    id: '202602-1',
+    month: 'February 2026',
+    date: 'February 18, 2026',
+    title: 'Critical QA Fixes, Social Links & Branding Standardization',
+    excerpt:
+      'Fixed CTA section issues, page titles, alt text, and support links. Added social media links and phone number to footer. Implemented typing animation with smooth fade transitions. Updated all demo booking links to TidyCal. Standardized branding to "DopeTech" across the entire site.',
+    categories: ['Platform'],
+    gradient: 'from-[#6366f1]/80 to-dt-blue/80',
+    features: [
+      'CTA, page title, and alt text fixes',
+      'Social media links in footer',
+      'Typing animation with fade transitions',
+      'TidyCal demo booking integration',
+      'Branding standardized to "DopeTech"',
+    ],
+  },
+  {
+    id: '202602-0',
+    month: 'February 2026',
+    date: 'February 16, 2026',
+    title: 'Major Branding Update: New Logo & Cyan Accent',
+    excerpt:
+      'Rolled out the new DopeTech brand identity across the marketing site. New logo and signature cyan accent color (#00e5ff) applied globally.',
+    categories: ['Platform'],
+    gradient: 'from-dt-cyan/80 to-dt-blue/80',
+    features: [
+      'New DopeTech logo',
+      'Cyan accent color (#00e5ff)',
+    ],
+  },
+  // --- February early ---
+  {
+    id: '202602-e1',
+    month: 'February 2026',
+    date: 'February 6, 2026',
+    title: 'About Page, Careers Page & Integration Partners',
+    excerpt:
+      'Launched the About and Careers pages with footer reveal animation. Added integration partner logos to the homepage orbital animation. Visual consistency improvements and missing sections filled in across product pages.',
+    categories: ['Platform'],
+    gradient: 'from-[#a855f7]/80 to-[#6366f1]/80',
+    features: [
+      'About page with team info',
+      'Careers page with footer reveal animation',
+      'Integration partner logos on homepage',
+      'Visual consistency across product pages',
+    ],
+  },
+  // --- January 2026 ---
+  {
+    id: '202601-2',
+    month: 'January 2026',
+    date: 'January 30, 2026',
+    title: 'Product Pages Launch: DopeApps, DopeSites & DopeTender',
+    excerpt:
+      'Major feature sprint: launched dedicated product pages for all three DopeTech products as standalone routed pages. Also shipped Integrations page with partner profiles, Blog subsection, and solution pages for Adult Use, Medical, Delivery/Curbside, and Multi-Location dispensaries. Added scroll-to-top on navigation and sparkle/shimmer animations.',
+    categories: ['DopeApps', 'DopeSites', 'DopeTender', 'Platform'],
+    gradient: 'from-dt-cyan/80 to-dt-blue/80',
+    features: [
+      'DopeApps product page with feature showcase',
+      'DopeSites product page',
+      'DopeTender subsection with kiosk features',
+      'Integrations page with partner profiles',
+      'Blog subsection',
+      'Adult Use, Medical, Delivery, Multi-Location pages',
+      'Scroll-to-top on route navigation',
+    ],
+  },
+  {
+    id: '202601-1',
+    month: 'January 2026',
+    date: 'January 5, 2026',
+    title: 'Interactive Demo, Chat Box & New Logo',
+    excerpt:
+      'Completed the interactive product demo on the marketing site. Fixed the chat box component. Added shimmer effects and updated the logo to the new SVG format.',
+    categories: ['Platform'],
+    gradient: 'from-dt-blue/80 to-[#6366f1]/80',
+    features: [
+      'Interactive product demo',
+      'Chat box fix',
+      'Shimmer effects',
+      'New SVG logo',
+    ],
+  },
+  // --- December 2025 ---
+  {
+    id: '202512-2',
+    month: 'December 2025',
+    date: 'December 21, 2025',
+    title: 'Mobile API MCP Server for Claude Desktop',
+    excerpt:
+      'Built a read-only MCP (Model Context Protocol) server for Claude Desktop that enables AI-assisted troubleshooting of the mobile-api backend. Provides access to MongoDB queries, source code search, API documentation, and Sentry error logs.',
+    categories: ['Infrastructure', 'DopeApps'],
+    gradient: 'from-[#6366f1]/80 to-[#a855f7]/80',
+    features: [
+      'MCP server for Claude Desktop',
+      'MongoDB query access',
+      'Source code search',
+      'API docs integration',
+      'Sentry error log access',
+    ],
+  },
+  {
+    id: '202512-1',
+    month: 'December 2025',
+    date: 'December 11, 2025',
+    title: 'DopeTech Website Launch: dopetech.ai Goes Live',
+    excerpt:
+      'Initial launch of the DopeTech marketing website built with React 19, TypeScript, and Vite 7 on Cloudflare Pages. Featured particle animation system, vector field effects, mobile responsiveness, timeline with scroll-locked stepper, contact form with Slack notifications via Cloudflare Pages Function, and GitHub Actions deployment.',
+    categories: ['Platform'],
+    gradient: 'from-dt-cyan/80 to-dt-blue/80',
+    features: [
+      'dopetech.ai goes live',
+      'Particle animation system',
+      'Vector field effects',
+      'Scroll-locked timeline stepper',
+      'Contact form with Slack notifications',
+      'Cloudflare Pages deployment',
     ],
   },
 ]
 
-// Group updates by month
 function groupByMonth(updates: Update[]) {
   const groups: { month: string; updates: Update[] }[] = []
   for (const update of updates) {
@@ -119,20 +251,15 @@ const JUMP_MONTHS = [
   'February 2026',
   'January 2026',
   'December 2025',
-  'November 2025',
-  'October 2025',
-  'September 2025',
-  'August 2025',
-  'July 2025',
 ]
 
 const CATEGORY_COLORS: Record<string, string> = {
   DopeApps: 'bg-emerald-500',
   DopeSites: 'bg-dt-blue',
   DopeTender: 'bg-amber-500',
-  'Admin Panel': 'bg-dt-cyan',
-  Integrations: 'bg-violet-500',
-  Analytics: 'bg-rose-500',
+  Platform: 'bg-dt-cyan',
+  'Support Hub': 'bg-violet-500',
+  Infrastructure: 'bg-rose-500',
 }
 
 export function ProductUpdatesPage() {
@@ -140,7 +267,7 @@ export function ProductUpdatesPage() {
   const [activeCategories, setActiveCategories] = useState<string[]>([])
 
   const filtered = UPDATES.filter((u) => {
-    if (search && !u.title.toLowerCase().includes(search.toLowerCase())) return false
+    if (search && !u.title.toLowerCase().includes(search.toLowerCase()) && !u.excerpt.toLowerCase().includes(search.toLowerCase())) return false
     if (activeCategories.length > 0 && !u.categories.some((c) => activeCategories.includes(c))) return false
     return true
   })
@@ -200,7 +327,7 @@ export function ProductUpdatesPage() {
                 Have an idea or feature request?
               </p>
               <a
-                href="mailto:hello@dopetech.ai"
+                href="mailto:support@dopetech.ai"
                 className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-dt-cyan transition-colors hover:text-dt-cyan-bright"
               >
                 💬 Leave feedback
@@ -254,7 +381,7 @@ export function ProductUpdatesPage() {
 
                 <div className="space-y-8">
                   {group.updates.map((update) => (
-                    <article key={update.id} className="group cursor-pointer">
+                    <article key={update.id} className="group">
                       {/* Gradient banner */}
                       <div
                         className={cn(
@@ -266,7 +393,7 @@ export function ProductUpdatesPage() {
                           Product Update
                         </p>
                         <p className="mt-2 font-heading text-lg font-bold text-white">
-                          DopeTech {update.date.split(', ')[0].replace(update.month.split(' ')[0] + ' ', '')}
+                          DopeTech {update.date}
                         </p>
                         <div className="mt-4 space-y-1">
                           {update.features.map((f) => (
@@ -278,7 +405,7 @@ export function ProductUpdatesPage() {
                       </div>
 
                       {/* Card body */}
-                      <div className="rounded-b-2xl border border-t-0 border-white/[0.06] bg-white/[0.02] p-6 transition-colors group-hover:bg-white/[0.04]">
+                      <div className="rounded-b-2xl border border-t-0 border-white/[0.06] bg-white/[0.02] p-6">
                         {/* Category tags */}
                         <div className="flex flex-wrap items-center gap-3">
                           {update.categories.map((cat) => (
@@ -289,7 +416,7 @@ export function ProductUpdatesPage() {
                           ))}
                         </div>
 
-                        <h2 className="mt-3 text-xl font-bold text-dt-text transition-colors group-hover:text-dt-cyan">
+                        <h2 className="mt-3 text-xl font-bold text-dt-text">
                           {update.title}
                         </h2>
                         <p className="mt-2 text-sm leading-relaxed text-dt-text-muted">

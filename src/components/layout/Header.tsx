@@ -43,7 +43,7 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-[#080816]/90 backdrop-blur-xl border-b border-dt-cyan/[0.08] shadow-[0_4px_30px_rgba(0,136,255,0.06)]'
+          ? 'bg-[#0a1628] backdrop-blur-xl border-b border-dt-blue/20 shadow-[0_4px_30px_rgba(0,136,255,0.12)]'
           : 'bg-transparent',
       )}
     >

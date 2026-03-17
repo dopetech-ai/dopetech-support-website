@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { SITE_CONFIG } from '@/config/site'
 import { cn } from '@/lib/cn'
+import { setSeo, setOrganizationJsonLd, setSearchActionJsonLd } from '@/lib/seo'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,17 +23,38 @@ export function Header() {
     document.body.style.overflow = ''
   }, [location.pathname])
 
-  // Dynamic page title
+  // SEO for static routes
   useEffect(() => {
-    const titles: Record<string, string> = {
-      '/': 'Home',
-      '/product-updates': 'Product Updates',
-      '/developer-docs': 'Developer Docs',
-      '/contact': 'Contact Support',
-      '/search': 'Search',
+    const pages: Record<string, { title: string; description: string }> = {
+      '/': {
+        title: 'Home',
+        description: 'Get help with DopeTech products. Browse guides, troubleshooting articles, and FAQs for DopeApps, DopeSites, and DopeTender.',
+      },
+      '/product-updates': {
+        title: 'Product Updates',
+        description: 'The latest features, improvements, and fixes for DopeApps, DopeSites, and DopeTender.',
+      },
+      '/developer-docs': {
+        title: 'Developer Docs',
+        description: 'API documentation and developer resources for DopeTech products.',
+      },
+      '/contact': {
+        title: 'Contact Support',
+        description: 'Get in touch with DopeTech support. Report bugs, request features, or ask questions about DopeApps, DopeSites, and DopeTender.',
+      },
+      '/search': {
+        title: 'Search',
+        description: 'Search DopeTech support articles, guides, and troubleshooting resources.',
+      },
     }
-    const page = titles[location.pathname]
-    if (page) document.title = `${page} | DopeTech Support Hub`
+    const page = pages[location.pathname]
+    if (page) {
+      setSeo({ title: page.title, description: page.description, path: location.pathname })
+    }
+    if (location.pathname === '/') {
+      setOrganizationJsonLd()
+      setSearchActionJsonLd()
+    }
   }, [location.pathname])
 
   function toggleMenu() {

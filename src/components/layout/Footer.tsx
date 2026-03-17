@@ -42,6 +42,12 @@ export function Footer() {
             >
               Book a Demo
             </a>
+            <Link
+              to="/status"
+              className="text-sm text-dt-text-muted transition-colors hover:text-dt-text"
+            >
+              System Status
+            </Link>
           </nav>
 
           {/* Contact CTA */}

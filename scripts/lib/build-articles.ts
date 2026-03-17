@@ -58,6 +58,16 @@ export async function buildAllArticles(): Promise<ContentData> {
   const rawArticles = await fetchPublishedArticles()
   console.log(`Found ${rawArticles.length} published articles`)
 
+  // Build Notion page ID → slug map for internal link rewriting
+  const notionIdToSlug = new Map<string, string>()
+  for (const raw of rawArticles) {
+    const slug = sanitizeSlug(raw.slug)
+    if (slug) {
+      notionIdToSlug.set(raw.id, slug)
+    }
+  }
+  console.log(`Built ID→slug map with ${notionIdToSlug.size} entries`)
+
   const articles: Article[] = []
   const seenSlugs = new Set<string>()
 
@@ -96,7 +106,7 @@ export async function buildAllArticles(): Promise<ContentData> {
     // Render to HTML
     let html: string
     try {
-      html = await renderPageToHtml(notionClient, raw.id)
+      html = await renderPageToHtml(notionClient, raw.id, notionIdToSlug)
     } catch (err) {
       console.warn(`⚠ Error rendering "${raw.title}":`, err)
       continue

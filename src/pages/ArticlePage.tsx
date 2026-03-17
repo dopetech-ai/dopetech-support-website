@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
+import { setSeo, setArticleJsonLd, setBreadcrumbJsonLd } from '@/lib/seo'
 import { useParams, Navigate } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import { Breadcrumb } from '@/components/common/Breadcrumb'
@@ -17,7 +18,7 @@ function formatDate(iso: string): string {
   })
 }
 
-const TOC_MIN_HEADINGS = 3
+const TOC_MIN_HEADINGS = 2
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>()
@@ -37,11 +38,30 @@ export function ArticlePage() {
     })
   }, [slug])
 
-  // Set page title
+  // SEO
   useEffect(() => {
-    if (article) {
-      document.title = `${article.title} | DopeTech Support Hub`
-    }
+    if (!article) return
+    const catDef = getCategoryDef(article.category)
+    setSeo({
+      title: article.title,
+      description: article.metaDescription || `${article.title} - DopeTech Support`,
+      path: `/articles/${article.slug}`,
+      type: 'article',
+      modifiedTime: article.lastEdited,
+    })
+    setArticleJsonLd({
+      title: article.title,
+      description: article.metaDescription,
+      path: `/articles/${article.slug}`,
+      dateModified: article.lastEdited,
+      category: catDef?.name,
+    })
+    setBreadcrumbJsonLd({
+      items: [
+        ...(catDef ? [{ name: catDef.name, url: `/${article.category}` }] : []),
+        { name: article.title },
+      ],
+    })
   }, [article])
 
   // Inject heading IDs and determine if TOC is needed

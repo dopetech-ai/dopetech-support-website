@@ -1,5 +1,6 @@
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { setSeo } from '@/lib/seo'
 import {
   Smartphone, Globe, Monitor,
   Key, RotateCcw, Download, RefreshCw, Battery, Bell,
@@ -102,7 +103,11 @@ export function ProductSupportPage() {
 
   useEffect(() => {
     if (config) {
-      document.title = `${config.name} Support | DopeTech Support Hub`
+      setSeo({
+        title: `${config.name} Support`,
+        description: `Get help with ${config.name}. ${config.tagline}`,
+        path: location.pathname,
+      })
     }
   }, [config])
 

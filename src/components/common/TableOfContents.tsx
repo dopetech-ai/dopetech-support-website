@@ -12,9 +12,15 @@ interface TableOfContentsProps {
   minHeadings?: number
 }
 
-/** Extract heading text, stripping nested HTML tags */
+/** Extract heading text, stripping nested HTML tags and decoding entities */
 function stripTags(html: string): string {
-  return html.replace(/<[^>]+>/g, '').trim()
+  const text = html.replace(/<[^>]+>/g, '').trim()
+  const entities: Record<string, string> = {
+    '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"',
+    '&#39;': "'", '&#x27;': "'", '&apos;': "'",
+    '&ndash;': '–', '&mdash;': '—', '&nbsp;': ' ',
+  }
+  return text.replace(/&[#\w]+;/g, (m) => entities[m] ?? m)
 }
 
 /** Generate a URL-safe ID from heading text */

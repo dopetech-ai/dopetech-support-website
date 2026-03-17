@@ -5,6 +5,7 @@ import { ArticleListItem } from '@/components/common/ArticleListItem'
 import { ContactCTA } from '@/components/common/ContactCTA'
 import { getArticlesByCategory, getCategoryDef } from '@/lib/content'
 import { getIcon } from '@/lib/icons'
+import { setSeo, setBreadcrumbJsonLd } from '@/lib/seo'
 import type { Article } from '@/types/article'
 
 export function CategoryPage() {
@@ -16,7 +17,12 @@ export function CategoryPage() {
 
   useEffect(() => {
     if (!category || !def) return
-    document.title = `${def.name} | DopeTech Support Hub`
+    setSeo({
+      title: def.name,
+      description: def.description,
+      path: `/${category}`,
+    })
+    setBreadcrumbJsonLd({ items: [{ name: def.name }] })
     getArticlesByCategory(category).then((a) => {
       setArticles(a)
       setLoading(false)

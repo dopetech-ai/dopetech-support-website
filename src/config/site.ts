@@ -83,6 +83,7 @@ export const RESERVED_SLUGS = new Set([
   'dopeapps',
   'dopesites',
   'dopetender',
+  'search',
 ])
 
 export function isValidCategory(slug: string): boolean {

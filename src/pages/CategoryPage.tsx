@@ -16,6 +16,7 @@ export function CategoryPage() {
 
   useEffect(() => {
     if (!category || !def) return
+    document.title = `${def.name} | DopeTech Support Hub`
     getArticlesByCategory(category).then((a) => {
       setArticles(a)
       setLoading(false)

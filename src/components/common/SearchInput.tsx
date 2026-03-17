@@ -19,9 +19,10 @@ interface PagefindInstance {
 interface SearchInputProps {
   size?: 'default' | 'large'
   className?: string
+  onSearch?: (query: string) => void
 }
 
-export function SearchInput({ size = 'default', className }: SearchInputProps) {
+export function SearchInput({ size = 'default', className, onSearch }: SearchInputProps) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
   const [open, setOpen] = useState(false)
@@ -34,7 +35,6 @@ export function SearchInput({ size = 'default', className }: SearchInputProps) {
   const initPagefind = useCallback(async () => {
     if (pagefindRef.current) return
     try {
-      // Load Pagefind dynamically from the built index at runtime
       const pagefindPath = '/_pagefind/pagefind.js'
       const pf = await import(/* @vite-ignore */ pagefindPath) as PagefindInstance
       pagefindRef.current = pf
@@ -88,9 +88,18 @@ export function SearchInput({ size = 'default', className }: SearchInputProps) {
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
       setActiveIndex((i) => Math.max(i - 1, -1))
-    } else if (e.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
+    } else if (e.key === 'Enter') {
       e.preventDefault()
-      navigateToResult(results[activeIndex])
+      if (activeIndex >= 0 && results[activeIndex]) {
+        navigateToResult(results[activeIndex])
+      } else if (query.trim()) {
+        setOpen(false)
+        if (onSearch) {
+          onSearch(query.trim())
+        } else {
+          navigate(`/search?q=${encodeURIComponent(query.trim())}`)
+        }
+      }
     } else if (e.key === 'Escape') {
       setOpen(false)
       inputRef.current?.blur()
@@ -100,10 +109,21 @@ export function SearchInput({ size = 'default', className }: SearchInputProps) {
   function navigateToResult(result: SearchResult) {
     setOpen(false)
     setQuery('')
-    // Pagefind URLs are relative paths like /articles/my-slug/
     const url = result.url.replace(/\/index\.html$/, '').replace(/\/$/, '') || '/'
     navigate(url)
   }
+
+  /** Expose current query for external use (e.g. Search button) */
+  function getQuery() {
+    return query.trim()
+  }
+
+  // Attach getQuery to the input element so parent can access it
+  useEffect(() => {
+    if (inputRef.current) {
+      (inputRef.current as HTMLInputElement & { getQuery: () => string }).getQuery = getQuery
+    }
+  })
 
   return (
     <div className={cn('search-container relative', className)}>

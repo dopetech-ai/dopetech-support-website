@@ -1,5 +1,4 @@
 import { Code2, Terminal, Webhook, Wrench } from 'lucide-react'
-import { SITE_CONFIG } from '@/config/site'
 
 export function DeveloperDocsPage() {
   return (
@@ -48,24 +47,6 @@ export function DeveloperDocsPage() {
               <p className="mt-2 text-xs font-medium text-dt-text-dim">{label}</p>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href={`mailto:${SITE_CONFIG.email}?subject=Developer%20Docs%20Interest`}
-            className="inline-flex rounded-full bg-gradient-to-r from-dt-cyan to-dt-blue px-6 py-2.5 text-sm font-semibold text-dt-bg transition-all duration-300 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] hover:brightness-110"
-          >
-            Notify me when it's ready →
-          </a>
-          <a
-            href={SITE_CONFIG.mainSiteUrl}
-            className="inline-flex rounded-full border border-white/[0.08] px-6 py-2.5 text-sm font-medium text-dt-text-muted transition-all hover:border-white/[0.15] hover:text-dt-text"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Back to dopetech.ai
-          </a>
         </div>
 
         {/* Cheeky footer note */}

@@ -16,10 +16,10 @@ const ISSUE_TYPES: { value: IssueType; label: string }[] = [
 const PRODUCTS = ['DopeApps', 'DopeSites', 'DopeTender', 'Admin Panel', 'Other']
 
 const PRIORITIES = [
-  { value: 'low', label: 'Low', description: 'No immediate impact' },
-  { value: 'medium', label: 'Medium', description: 'Workaround available' },
-  { value: 'high', label: 'High', description: 'Blocking my work' },
-  { value: 'critical', label: 'Critical', description: 'System down' },
+  { value: 'low', label: 'Low', description: 'General question or minor issue' },
+  { value: 'medium', label: 'Medium', description: 'Something isn\'t working right' },
+  { value: 'high', label: 'High', description: 'I\'m unable to complete a key task' },
+  { value: 'critical', label: 'Critical', description: 'My system or app is down' },
 ]
 
 export function ContactPage() {
@@ -103,7 +103,11 @@ export function ContactPage() {
             <span className="text-dt-cyan">{email}</span> shortly.
           </p>
           <p className="mt-1 text-sm text-dt-text-dim">
-            Typical response time: within 24 hours.
+            Typical response time: 1-3 business days.
+          </p>
+          <p className="mt-3 text-sm text-dt-text-dim">
+            For urgent issues, call us at{' '}
+            <a href="tel:+18669333277" className="text-dt-cyan hover:underline">(866) 933-2377</a>.
           </p>
           <button
             onClick={() => {
@@ -230,7 +234,7 @@ export function ContactPage() {
               >
                 {PRIORITIES.map((p) => (
                   <option key={p.value} value={p.value}>
-                    {p.label} — {p.description}
+                    {p.label}: {p.description}
                   </option>
                 ))}
               </select>
@@ -333,7 +337,8 @@ export function ContactPage() {
           </button>
 
           <p className="text-center text-xs text-dt-text-dim">
-            We typically respond within 24 hours.
+            We typically respond within 1-3 business days. For urgent issues, call{' '}
+            <a href="tel:+18669333277" className="text-dt-cyan hover:underline">(866) 933-2377</a>.
           </p>
         </form>
       </section>

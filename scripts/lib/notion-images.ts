@@ -3,7 +3,7 @@ import path from 'node:path'
 import { createHash } from 'node:crypto'
 import { imageSize } from 'image-size'
 
-const DIST_DIR = path.resolve('dist')
+const PUBLIC_DIR = path.resolve('public')
 
 export interface ImageResult {
   originalUrl: string
@@ -34,7 +34,7 @@ export async function downloadImage(
     const ext = guessExtension(url, response.headers.get('content-type'))
 
     const relDir = `images/articles/${articleSlug}`
-    const absDir = path.join(DIST_DIR, relDir)
+    const absDir = path.join(PUBLIC_DIR, relDir)
     fs.mkdirSync(absDir, { recursive: true })
 
     const filename = `${hash}.${ext}`
@@ -101,7 +101,7 @@ export async function processImagesInHtml(
         ? ` width="${imageResult.width}" height="${imageResult.height}"`
         : ''
 
-    const newTag = `<img${beforeSrc}src="${imageResult.localPath}"${afterSrc}${dims} loading="${loading}">`
+    const newTag = `<img ${beforeSrc}src="${imageResult.localPath}"${afterSrc}${dims} loading="${loading}">`
     result = result.replace(fullMatch, newTag)
     imageIndex++
   }

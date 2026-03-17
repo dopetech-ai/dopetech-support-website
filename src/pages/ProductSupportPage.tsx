@@ -22,6 +22,7 @@ interface ProductConfig {
   name: string
   tagline: string
   icon: LucideIcon
+  heroImage: string
   gradient: string
   topics: HelpTopic[]
   guides: HelpTopic[]
@@ -32,6 +33,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     name: 'DopeApps',
     tagline: 'Custom mobile apps for your dispensary',
     icon: Smartphone,
+    heroImage: '/images/hero-dopeapps.avif',
     gradient: 'from-dt-cyan to-dt-blue',
     topics: [
       { icon: Download, title: 'Set Up Your App', description: 'Get your custom DopeApps mobile app installed, configured, and ready for customers.' },
@@ -54,6 +56,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     name: 'DopeSites',
     tagline: 'SEO-first dispensary websites',
     icon: Globe,
+    heroImage: '/images/hero-dopesites.jpg',
     gradient: 'from-dt-blue to-[#6366f1]',
     topics: [
       { icon: Layout, title: 'Site Setup & Launch', description: 'Get your DopeSites website live with your custom domain and branding.' },
@@ -76,6 +79,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     name: 'DopeTender',
     tagline: 'In-store kiosks for dispensaries',
     icon: Monitor,
+    heroImage: '/images/hero-dopetender.jpg',
     gradient: 'from-[#6366f1] to-dt-cyan',
     topics: [
       { icon: Download, title: 'Kiosk Setup', description: 'Install, configure, and deploy your DopeTender kiosk hardware and software.' },
@@ -113,21 +117,21 @@ export function ProductSupportPage() {
 
   if (!config) return <Navigate to="/404" replace />
 
-  const ProductIcon = config.icon
-
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden pb-16 pt-28">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className={`absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-gradient-to-r ${config.gradient} opacity-[0.04] blur-[120px]`} />
-        </div>
+      {/* Hero image banner */}
+      <div className="relative h-[400px] w-full overflow-hidden">
+        <img
+          src={config.heroImage}
+          alt={`${config.name} hero`}
+          className="h-full w-full object-cover object-[center_70%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-dt-bg via-dt-bg/40 to-transparent" />
+      </div>
+
+      {/* Title */}
+      <section className="relative pb-16 -mt-20">
         <div className="mx-auto max-w-4xl text-center">
-          <div className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br ${config.gradient} p-[1px]`}>
-            <div className="flex h-full w-full items-center justify-center rounded-3xl bg-dt-bg">
-              <ProductIcon className="h-9 w-9 text-dt-cyan" />
-            </div>
-          </div>
           <h1 className="font-heading text-[length:var(--font-size-hero)] font-bold text-dt-text">
             {config.name} Support
           </h1>

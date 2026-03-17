@@ -17,6 +17,7 @@ const POPULAR_SEARCHES = [
 export function HomePage() {
   const [categories, setCategories] = useState<Category[]>([])
   const [articles, setArticles] = useState<Article[]>([])
+  const [expandedArticle, setExpandedArticle] = useState<string | null>(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export function HomePage() {
   return (
     <>
       {/* Hero — atmospheric gradient backdrop */}
-      <section className="relative overflow-hidden px-4 pb-28 pt-32 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden px-4 pb-12 pt-32 sm:px-6 lg:px-8">
         {/* Layered gradient background */}
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute left-1/3 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-dt-cyan/[0.06] blur-[150px]" />
@@ -87,18 +88,18 @@ export function HomePage() {
         </div>
 
         {/* Products row */}
-        <div className="mx-auto mt-10 flex max-w-4xl items-center justify-center gap-20 sm:gap-28">
+        <div className="mx-auto mt-16 flex max-w-4xl items-center justify-center gap-20 sm:gap-28">
           {[
-            { name: 'DopeApps', Icon: SmartphoneIcon, desc: 'Mobile Apps', to: '/dopeapps', delay: 'animate-float' },
-            { name: 'DopeSites', Icon: LaptopIcon, desc: 'Websites', to: '/dopesites', delay: 'animate-float-delay' },
-            { name: 'DopeTender', Icon: KioskIcon, desc: 'Kiosks', to: '/dopetender', delay: 'animate-float-delay-2' },
+            { name: 'DopeApps', Icon: SmartphoneIcon, desc: 'Mobile Apps', to: '/dopeapps' },
+            { name: 'DopeSites', Icon: LaptopIcon, desc: 'Websites', to: '/dopesites' },
+            { name: 'DopeTender', Icon: KioskIcon, desc: 'Kiosks', to: '/dopetender' },
           ].map((product) => (
             <Link
               key={product.name}
               to={product.to}
               className="group flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110"
             >
-              <div className={product.delay}>
+              <div>
                 <product.Icon className="h-28 w-28 text-dt-text-muted transition-colors duration-300 group-hover:text-dt-cyan drop-shadow-[0_0_12px_rgba(0,229,255,0.08)] group-hover:drop-shadow-[0_0_24px_rgba(0,229,255,0.25)]" />
               </div>
               <div className="text-center">
@@ -118,7 +119,7 @@ export function HomePage() {
       <section className="relative pt-4 pb-20">
         <div className="pointer-events-none absolute -left-40 top-0 h-[300px] w-[300px] rounded-full bg-dt-blue/[0.03] blur-[100px]" />
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-8">
+          <div className="flex items-baseline justify-between mb-8">
             <h2 className="font-heading text-[length:var(--font-size-h1)] font-bold text-dt-text">
               Get started with DopeTech
             </h2>
@@ -167,18 +168,30 @@ export function HomePage() {
             Popular articles
           </h2>
           <div className="space-y-3">
-            {articles.map((article) => (
-              <Link
-                key={article.id}
-                to={`/articles/${article.slug}`}
-                className="group flex items-center justify-between rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 transition-all duration-200 hover:border-dt-cyan/20 hover:bg-white/[0.04]"
-              >
-                <span className="text-base font-medium text-dt-text transition-colors duration-200 group-hover:text-dt-cyan">
-                  {article.title}
-                </span>
-                <ChevronDown className="h-5 w-5 shrink-0 text-dt-text-dim transition-all duration-200 group-hover:-rotate-90 group-hover:text-dt-cyan" />
-              </Link>
-            ))}
+            {articles.map((article) => {
+              const isExpanded = expandedArticle === article.id
+              return (
+                <div key={article.id} className="rounded-2xl border border-white/[0.10] bg-white/[0.05] transition-all duration-200 hover:border-dt-cyan/20 hover:bg-white/[0.08]">
+                  <button
+                    onClick={() => setExpandedArticle(isExpanded ? null : article.id)}
+                    className="group flex w-full items-center justify-between px-6 py-5 text-left"
+                  >
+                    <span className="text-base font-medium text-dt-text transition-colors duration-200 group-hover:text-dt-cyan">
+                      {article.title}
+                    </span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-dt-text-dim transition-all duration-200 group-hover:text-dt-cyan ${isExpanded ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isExpanded && (
+                    <div className="border-t border-white/[0.06] px-6 py-6">
+                      <div
+                        className="prose prose-invert max-w-none"
+                        dangerouslySetInnerHTML={{ __html: article.html }}
+                      />
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
           </div>
         </section>

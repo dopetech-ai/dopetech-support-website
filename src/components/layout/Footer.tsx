@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '@/config/site'
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-dt-bg">
+    <footer className="border-t border-dt-blue/15 bg-gradient-to-b from-dt-blue/[0.04] to-dt-bg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer row */}
         <div className="flex flex-col items-center justify-between gap-6 py-8 sm:flex-row">
@@ -53,7 +53,7 @@ export function Footer() {
           {/* Contact CTA */}
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-dt-cyan/10 to-dt-blue/10 border border-dt-cyan/20 px-5 py-2 text-sm font-medium text-dt-cyan transition-all hover:border-dt-cyan/40 hover:shadow-[0_0_16px_rgba(0,229,255,0.15)]"
+            className="inline-flex items-center gap-2 rounded-full bg-dt-blue/10 border border-dt-blue/20 px-5 py-2 text-sm font-medium text-dt-blue transition-all hover:border-dt-blue/40 hover:shadow-[0_0_16px_rgba(56,136,255,0.15)]"
           >
             Contact Support
           </Link>

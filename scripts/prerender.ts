@@ -75,6 +75,18 @@ async function main() {
 
   // Static pages
   routes.push({
+    path: '/faq',
+    title: 'FAQ | DopeTech Support Hub',
+    description: 'Frequently asked questions about DopeApps, DopeSites, and DopeTender.',
+    content: '<h1>Frequently Asked Questions</h1>',
+  })
+  routes.push({
+    path: '/status',
+    title: 'System Status | DopeTech Support Hub',
+    description: 'Current system status for DopeTech services.',
+    content: '<h1>System Status</h1>',
+  })
+  routes.push({
     path: '/product-updates',
     title: 'Product Updates | DopeTech Support Hub',
     description: 'The latest features, improvements, and fixes for DopeApps, DopeSites, and DopeTender.',

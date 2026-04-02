@@ -22,12 +22,14 @@ interface FaqProduct {
 
 const faqData = faqJson as Record<string, FaqProduct>
 
-const PRODUCT_TABS = [
+const ALL_PRODUCT_TABS = [
   { key: 'general', Icon: null },
   { key: 'dopeapps', Icon: SmartphoneIcon },
   { key: 'dopesites', Icon: LaptopIcon },
   { key: 'dopetender', Icon: KioskIcon },
 ] as const
+
+const PRODUCT_TABS = ALL_PRODUCT_TABS.filter(({ key }) => key in faqJson)
 
 export function FaqPage() {
   const [activeTab, setActiveTab] = useState('general')

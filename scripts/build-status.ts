@@ -5,18 +5,20 @@ import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoint
 
 const DATA_DIR = path.resolve('src/data')
 const OUTPUT_FILE = path.join(DATA_DIR, 'status.json')
-const STATUS_DATABASE_ID = 'c2262b3b-bf9a-41db-8faa-6ffc953fa0ee'
+const STATUS_DATABASE_ID = '328185e6-e953-430c-b3da-b32409442b53'
 
 async function main() {
   const auth = process.env.NOTION_API_KEY
   if (!auth) throw new Error('NOTION_API_KEY is required')
 
-  const notion = new Client({ auth })
+  const notion = new Client({ auth, notionVersion: '2022-06-28' })
 
   console.log('Fetching system status from Notion...')
 
-  const response = await notion.dataSources.query({
-    data_source_id: STATUS_DATABASE_ID,
+  const response = await notion.request<{ results: unknown[]; has_more: boolean; next_cursor: string | null }>({
+    path: `databases/${STATUS_DATABASE_ID}/query`,
+    method: 'post',
+    body: {},
   })
 
   const services: Array<{ name: string; status: string; message: string }> = []
@@ -24,7 +26,7 @@ async function main() {
 
   let mostRecentEdit = ''
 
-  for (const page of response.results) {
+  for (const page of response.results as Record<string, unknown>[]) {
     if (!('properties' in page)) continue
     const p = page as PageObjectResponse
     const props = p.properties

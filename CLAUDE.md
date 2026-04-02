@@ -33,7 +33,7 @@ Required for deploy:
 - `CLOUDFLARE_ACCOUNT_ID`
 
 ## Notion Database Schema
-"Support Hub Database" — data source ID `2af36807-99a6-80b9-90a7-000b5870b126`
+"Support Hub Database" — data source ID `2af36807-99a6-8038-8bcd-e1e8dc7f2ef6`
 
 Key properties used by the build:
 - `Name` (title) — Article title (also used to auto-generate URL slugs)

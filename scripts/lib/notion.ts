@@ -13,7 +13,9 @@ function getClient(): Client {
   if (!notion) {
     const auth = process.env.NOTION_API_KEY
     if (!auth) throw new Error('NOTION_API_KEY environment variable is required')
-    notion = new Client({ auth })
+    // Use legacy API version — the data_sources endpoint requires integration
+    // capabilities that may not be enabled on all integrations
+    notion = new Client({ auth, notionVersion: '2022-06-28' })
   }
   return notion
 }
@@ -105,20 +107,23 @@ export async function fetchPublishedArticles(): Promise<RawArticle[]> {
   let cursor: string | undefined
 
   do {
-    // SDK v5: dataSources.query
-    // Filter by Status (status type) = "Live"
+    // Use legacy databases/query endpoint (data_sources endpoint requires
+    // additional integration capabilities not always enabled)
     const response = await withRateLimit(() =>
-      client.dataSources.query({
-        data_source_id: databaseId,
-        filter: {
-          property: 'Status',
-          status: { equals: 'Live' },
+      client.request<{ results: unknown[]; has_more: boolean; next_cursor: string | null }>({
+        path: `databases/${databaseId}/query`,
+        method: 'post',
+        body: {
+          filter: {
+            property: 'Status',
+            status: { equals: 'Live' },
+          },
+          ...(cursor ? { start_cursor: cursor } : {}),
         },
-        start_cursor: cursor,
       }),
     )
 
-    for (const page of response.results) {
+    for (const page of response.results as Record<string, unknown>[]) {
       if (!('properties' in page)) continue
       const p = page as PageObjectResponse
       const props = p.properties

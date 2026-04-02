@@ -3,7 +3,7 @@ import path from 'node:path'
 import { Client } from '@notionhq/client'
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints.js'
 
-const FAQ_DATABASE_ID = process.env.NOTION_FAQ_DATABASE_ID || '967cb391-8c24-46dc-9352-1c22e2384ea8'
+const FAQ_DATABASE_ID = process.env.NOTION_FAQ_DATABASE_ID || 'c1237b92-b757-406d-9a15-fb6530bd8b75'
 const DATA_DIR = path.resolve('src/data')
 const OUTPUT_FILE = path.join(DATA_DIR, 'faqData.json')
 
@@ -35,22 +35,25 @@ async function fetchFaqs(): Promise<RawFaq[]> {
   const auth = process.env.NOTION_API_KEY
   if (!auth) throw new Error('NOTION_API_KEY is required')
 
-  const client = new Client({ auth })
+  const client = new Client({ auth, notionVersion: '2022-06-28' })
   const faqs: RawFaq[] = []
   let cursor: string | undefined
 
   do {
-    const response = await client.dataSources.query({
-      data_source_id: FAQ_DATABASE_ID,
-      filter: {
-        property: 'Status',
-        status: { equals: 'Done' },
+    const response = await client.request<{ results: unknown[]; has_more: boolean; next_cursor: string | null }>({
+      path: `databases/${FAQ_DATABASE_ID}/query`,
+      method: 'post',
+      body: {
+        filter: {
+          property: 'Status',
+          status: { equals: 'Done' },
+        },
+        sorts: [{ property: 'Sort Order', direction: 'ascending' }],
+        ...(cursor ? { start_cursor: cursor } : {}),
       },
-      sorts: [{ property: 'Sort Order', direction: 'ascending' }],
-      start_cursor: cursor,
     })
 
-    for (const page of response.results) {
+    for (const page of response.results as Record<string, unknown>[]) {
       if (!('properties' in page)) continue
       const p = page as PageObjectResponse
       const props = p.properties

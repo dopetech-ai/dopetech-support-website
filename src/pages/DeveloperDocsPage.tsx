@@ -21,7 +21,7 @@ export function DeveloperDocsPage() {
 
         <p className="mt-4 text-lg text-dt-text-muted">
           Our API documentation is getting the{' '}
-          <span className="bg-gradient-to-r from-dt-cyan to-dt-blue bg-clip-text text-transparent font-semibold">
+          <span className="shimmer-text font-semibold">
             DOPE treatment
           </span>
           . We're building something worth waiting for.

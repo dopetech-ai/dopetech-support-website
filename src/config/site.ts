@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: 'DopeTech',
   supportName: 'DopeTech Support',
   tagline: 'How can we help you?',
-  phone: '(866) WEED-APP',
+  phone: '(866) 933-3277',
   phoneHref: 'tel:+18669333277',
   email: 'hello@dopetech.ai',
   mainSiteUrl: 'https://dopetech.ai',
@@ -85,6 +85,8 @@ export const RESERVED_SLUGS = new Set([
   'dopetender',
   'search',
   'status',
+  'getting-started',
+  'faq',
 ])
 
 export function isValidCategory(slug: string): boolean {

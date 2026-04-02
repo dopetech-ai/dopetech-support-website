@@ -163,6 +163,22 @@ body {
   animation: float 6s ease-in-out 4s infinite;
 }
 
+.shimmer-text {
+  background-size: 200% 100%;
+  background-image: linear-gradient(
+    105deg,
+    #00e5ff 0%,
+    #0088ff 30%,
+    #40eeff 50%,
+    #0088ff 70%,
+    #00e5ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
 /* ── Reduced motion ────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

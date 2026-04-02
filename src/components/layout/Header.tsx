@@ -46,6 +46,10 @@ export function Header() {
         title: 'Search',
         description: 'Search DopeTech support articles, guides, and troubleshooting resources.',
       },
+      '/faq': {
+        title: 'FAQ',
+        description: 'Frequently asked questions about DopeApps, DopeSites, and DopeTender — quick answers to common questions.',
+      },
     }
     const page = pages[location.pathname]
     if (page) {
@@ -100,6 +104,17 @@ export function Header() {
               )}
             >
               Home
+            </Link>
+            <Link
+              to="/faq"
+              className={cn(
+                'rounded-full px-4 py-2 text-sm transition-all duration-200',
+                location.pathname === '/faq'
+                  ? 'bg-white/[0.08] text-dt-text border border-white/[0.08]'
+                  : 'text-dt-text-muted hover:text-dt-text hover:bg-white/[0.05]',
+              )}
+            >
+              FAQ
             </Link>
             <Link
               to="/product-updates"
@@ -204,6 +219,17 @@ export function Header() {
               )}
             >
               Home
+            </Link>
+            <Link
+              to="/faq"
+              className={cn(
+                'rounded-xl px-4 py-3 text-sm transition-colors',
+                location.pathname === '/faq'
+                  ? 'bg-white/[0.08] text-dt-text'
+                  : 'text-dt-text-muted hover:bg-white/[0.05] hover:text-dt-text',
+              )}
+            >
+              FAQ
             </Link>
             <Link
               to="/product-updates"

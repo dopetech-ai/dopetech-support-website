@@ -9,6 +9,8 @@ import { ContactPage } from '@/pages/ContactPage'
 import { ProductSupportPage } from '@/pages/ProductSupportPage'
 import { SearchPage } from '@/pages/SearchPage'
 import { StatusPage } from '@/pages/StatusPage'
+import { FaqPage } from '@/pages/FaqPage'
+import { OnboardingPage } from '@/pages/OnboardingPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 
 export function App() {
@@ -21,6 +23,8 @@ export function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/status" element={<StatusPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/getting-started" element={<OnboardingPage />} />
         <Route path="/dopeapps" element={<ProductSupportPage />} />
         <Route path="/dopesites" element={<ProductSupportPage />} />
         <Route path="/dopetender" element={<ProductSupportPage />} />

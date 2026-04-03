@@ -3,6 +3,8 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
+  repository_dispatch:
+    types: [notion-content-update]
   workflow_dispatch:
 
 permissions:

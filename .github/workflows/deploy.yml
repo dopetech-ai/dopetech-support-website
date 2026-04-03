@@ -30,6 +30,18 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
+      - name: Build FAQ from Notion
+        run: npx tsx scripts/build-faq.ts
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_FAQ_DATABASE_ID: ${{ secrets.NOTION_FAQ_DATABASE_ID }}
+
+      - name: Build status from Notion
+        run: npx tsx scripts/build-status.ts
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_STATUS_DATABASE_ID: ${{ secrets.NOTION_STATUS_DATABASE_ID }}
+
       - name: Build site
         run: npm run build
 

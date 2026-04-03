@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronDown, ArrowRight } from 'lucide-react'
+import DOMPurify from 'dompurify'
 import { SearchInput } from '@/components/common/SearchInput'
 import { SmartphoneIcon, LaptopIcon, KioskIcon } from '@/components/common/ProductIcons'
 import { CategoryCard } from '@/components/common/CategoryCard'
@@ -187,7 +188,7 @@ export function HomePage() {
                     <div className="border-t border-white/[0.06] px-6 py-6">
                       <div
                         className="prose prose-invert max-w-none"
-                        dangerouslySetInnerHTML={{ __html: article.html }}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.html) }}
                       />
                     </div>
                   )}

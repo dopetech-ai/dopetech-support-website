@@ -2,10 +2,22 @@ interface Env {
   NOTION_API_KEY: string
 }
 
+const ALLOWED_ORIGINS = [
+  'https://support.dopetech.ai',
+  'https://dev.dopetech-support.pages.dev',
+]
+
+function getCorsOrigin(request: Request): string {
+  const origin = request.headers.get('Origin') || ''
+  return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
+  const corsOrigin = getCorsOrigin(context.request)
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': corsOrigin,
+    Vary: 'Origin',
   }
 
   try {
@@ -93,12 +105,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 }
 
 // Handle CORS preflight
-export const onRequestOptions: PagesFunction = async () => {
+export const onRequestOptions: PagesFunction = async (context) => {
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': getCorsOrigin(context.request),
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
+      Vary: 'Origin',
     },
   })
 }

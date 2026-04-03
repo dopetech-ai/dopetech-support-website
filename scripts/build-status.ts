@@ -5,7 +5,7 @@ import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoint
 
 const DATA_DIR = path.resolve('src/data')
 const OUTPUT_FILE = path.join(DATA_DIR, 'status.json')
-const STATUS_DATABASE_ID = '328185e6-e953-430c-b3da-b32409442b53'
+const STATUS_DATABASE_ID = process.env.NOTION_STATUS_DATABASE_ID || '328185e6-e953-430c-b3da-b32409442b53'
 
 async function main() {
   const auth = process.env.NOTION_API_KEY

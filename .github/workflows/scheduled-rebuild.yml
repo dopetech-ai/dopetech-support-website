@@ -15,6 +15,7 @@ concurrency:
 jobs:
   rebuild:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -29,6 +30,18 @@ jobs:
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+
+      - name: Build FAQ from Notion
+        run: npx tsx scripts/build-faq.ts
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_FAQ_DATABASE_ID: ${{ secrets.NOTION_FAQ_DATABASE_ID }}
+
+      - name: Build status from Notion
+        run: npx tsx scripts/build-status.ts
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_STATUS_DATABASE_ID: ${{ secrets.NOTION_STATUS_DATABASE_ID }}
 
       - name: Build site
         run: npm run build
